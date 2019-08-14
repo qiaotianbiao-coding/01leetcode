@@ -1,17 +1,10 @@
-public class Main{
-    public static void main(String[] args)
-    {
-
-    }
-    class ListNode {
-        int val;
-      ListNode next;
-      ListNode(int x) { val = x; }
-    }
+public class Main{c
     public ListNode removeNthFromEnd(ListNode head, int n) {
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
      int length = 1;
      int loca = 0;
-     ListNode node = head;
+     ListNode node = dummy;
      ListNode node2 = head;
      while(node2.next!=null)
      {
@@ -19,24 +12,14 @@ public class Main{
         node2 = node2.next;
      }
      loca = length - n;
-     int now = 0;
-     while(node.next!=null)
+     
+     while(loca>0)
      {
-         if(now+1 == loca)
-         {
-            node.next = node.next.next;
-            break;
-         }else{
-             now++;
-             node = node.next;
-         }
+      loca--;
+      node = node.next;
      }
-     return node;
-
-
-
-
-
+     node.next = node.next.next;
+     return dummy.next;
     }
 
 }
